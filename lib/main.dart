@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sorteio_de_times/home_screen.dart';
+import 'package:sorteio_de_times/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

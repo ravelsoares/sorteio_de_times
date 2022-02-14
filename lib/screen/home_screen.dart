@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,6 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _timeController = TextEditingController();
   List times = [];
   List jogadores = [];
+  String timeSorteado = '';
+  String jogadorSorteado = '';
 
   @override
   Widget build(BuildContext context) {
@@ -143,11 +146,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: sortear,
+                        child: Text('Sortear'),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void sortear() {
+    Random sorteio = Random();
+
+    int indexTime = Random().nextInt(times.length);
+    int indexJogador = Random().nextInt(jogadores.length);
+
+    setState(() {
+      jogadores.removeAt(indexJogador);
+      times.removeAt(indexTime);
+    });
   }
 }
